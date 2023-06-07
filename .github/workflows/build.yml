@@ -71,10 +71,10 @@ jobs:
           else
             NV="$(yq '.desc-nv-no' ./${{ matrix.recipe }})"
           fi
-          DESC="$(yq '.desc-prefix' ./${{ matrix.recipe }})"
-          DESC="$DESC $DE $(yq '.desc-inter' ./${{ matrix.recipe }})"
-          DESC="$DESC $NV $(yq '.desc-suffix' ./${{ matrix.recipe }})"
-          echo "IMAGE_DESCRIPTION=$DESC" >> $GITHUB_ENV
+          DESC_PRE="$(yq '.desc-prefix' ./${{ matrix.recipe }})"
+          DESC_INTER="$(yq '.desc-inter' ./${{ matrix.recipe }})"
+          DESC_SUF="$(yq '.desc-suffix' ./${{ matrix.recipe }})"
+          echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
           echo "FEDORA_MAJOR_VERSION=$(yq '.fedora-version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
           echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${{ matrix.image }}" >> $GITHUB_ENV
 
