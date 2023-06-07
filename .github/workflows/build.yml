@@ -9,10 +9,6 @@ on:
   # or "main" branches, except when the commit only affects "documentation" text files.
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
   push:
-    branches:
-      - live
-      - template
-      - main
     paths-ignore:
       - "**.md"
       - "**.txt"
