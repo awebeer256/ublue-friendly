@@ -66,19 +66,22 @@ jobs:
         run: |
           SELECTED_IMAGE="${{ matrix.image }}"
           echo "IMAGE_NAME=ublue-${SELECTED_IMAGE}-friendly" >> $GITHUB_ENV
+          get_yaml_string() {
+            yq -- "${1}" "./${{ matrix.recipe }}"
+          }
           DE="${SELECTED_IMAGE#*-}"
           if [ ${SELECTED_IMAGE%-*} = nvidia ]; then
-            NV="$(yq '.desc_nv_yes' ./${{ matrix.recipe }})"
+            NV="$(get_yaml_string '.desc_nv_yes')"
           else
-            NV="$(yq '.desc_nv_no' ./${{ matrix.recipe }})"
+            NV="$(get_yaml_string '.desc_nv_no')"
           fi
-          DESC_PRE="$(yq '.desc_prefix' ./${{ matrix.recipe }})"
-          DESC_INTER="$(yq '.desc_inter' ./${{ matrix.recipe }})"
-          DESC_SUF="$(yq '.desc_suffix' ./${{ matrix.recipe }})"
+          DESC_PRE="$(get_yaml_string '.desc_prefix')"
+          DESC_INTER="$(get_yaml_string '.desc_inter')"
+          DESC_SUF="$(get_yaml_string '.desc_suffix')"
           echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
           #echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER" >> $GITHUB_ENV
-          echo "FEDORA_MAJOR_VERSION=$(yq '.fedora_version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${{ matrix.image }}" >> $GITHUB_ENV
+          echo "FEDORA_MAJOR_VERSION=$(get_yaml_string '.fedora_version')" >> $GITHUB_ENV
+          echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${SELECTED_IMAGE}" >> $GITHUB_ENV
 
       - name: Generate tags
         id: generate-tags
