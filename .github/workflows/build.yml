@@ -75,7 +75,7 @@ jobs:
           DESC_INTER="$(yq '.desc_inter' ./${{ matrix.recipe }})"
           #DESC_SUF="$(yq '.desc_suffix' ./${{ matrix.recipe }})"
           #echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
-          echo "IMAGE_DESCRIPTION=$DESC_INTER" >> $GITHUB_ENV
+          echo "IMAGE_DESCRIPTION=$DESC_PRE $DESC_INTER" >> $GITHUB_ENV
           echo "FEDORA_MAJOR_VERSION=$(yq '.fedora_version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
           echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${{ matrix.image }}" >> $GITHUB_ENV
 
