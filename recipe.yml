@@ -14,7 +14,7 @@ base-image: ghcr.io/awebeer256/ublue-main-base
 fedora-version: latest
 
 # This description will be visible in the container metadata.
-description: Universal Blue, customized by Adam Beer for personal use. More information: https://ublue.it/making-your-own/
+description: "Universal Blue, customized by Adam Beer for personal use. https://ublue.it/making-your-own/"
 
 # These scripts will be executed during the container build.
 # Place scripts in the "scripts/" dir and put the corresponding filenames here.
