@@ -9,7 +9,8 @@ on:
   # regardless of the branch names. (Not just "live, template and main" branches.)
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
   schedule:
-    - cron: "20 22 * * *"
+    - cron: "0 9 * * *"
+  # Adam: IDK what he's talking about: Nvidia builds clearly run at 8 AM so I'm setting this to 9 AM
     
   # Build pull requests whenever they are opened or updated, to make sure they
   # work. The build won't be deployed, since we filter out PRs in the deployment
