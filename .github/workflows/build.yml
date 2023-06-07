@@ -16,6 +16,9 @@ on:
     paths-ignore:
       - "**.md"
       - "**.txt"
+      - "**.gitignore"
+      - "**.gitkeep"
+      - ".github/ISSUE_TEMPLATE/**.yml"
   # Build pull requests whenever they are opened or updated, to make sure they
   # work. The build won't be deployed, since we filter out PRs in the deployment
   # stage. Note that submitted PRs run the workflow of the *fork's* own primary
@@ -28,6 +31,9 @@ on:
     paths-ignore:
       - "**.md"
       - "**.txt"
+      - "**.gitignore"
+      - "**.gitkeep"
+      - ".github/ISSUE_TEMPLATE/**.yml"
   # Build when manually triggering this workflow for a branch. This allows you
   # to build any branch, even if it's not listed in the automated triggers above.
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
