@@ -43,6 +43,7 @@ on:
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  RECIPE_FILE: recipe.yml
 
 jobs:
   push-ghcr:
@@ -57,8 +58,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        recipe:
-          - recipe.yml
         image: [main-sericea, nvidia-kinoite]
 
     steps:
@@ -73,8 +72,9 @@ jobs:
         run: |
           SELECTED_IMAGE="${{ matrix.image }}"
           echo "IMAGE_NAME=ublue-${SELECTED_IMAGE}-friendly" >> $GITHUB_ENV
+          RECIPE_FILE="./${{ env.RECIPE_FILE }}"
           get_yaml_string() {
-            yq -- "${1}" "./${{ matrix.recipe }}"
+            yq -- "${1}" "$RECIPE_FILE"
           }
           DE="${SELECTED_IMAGE#*-}"
           if [ ${SELECTED_IMAGE%-*} = nvidia ]; then
