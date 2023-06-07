@@ -71,7 +71,7 @@ jobs:
           else
             NV="$(yq '.desc_nv_no' ./${{ matrix.recipe }})"
           fi
-          #DESC_PRE="$(yq '.desc_prefix' ./${{ matrix.recipe }})"
+          DESC_PRE="$(yq '.desc_prefix' ./${{ matrix.recipe }})"
           DESC_INTER="$(yq '.desc_inter' ./${{ matrix.recipe }})"
           #DESC_SUF="$(yq '.desc_suffix' ./${{ matrix.recipe }})"
           #echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
