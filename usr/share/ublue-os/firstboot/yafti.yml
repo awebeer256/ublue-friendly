@@ -92,8 +92,10 @@ screens:
           packages:
             - Brave: com.brave.Browser
             - Google Chrome: com.google.Chrome
+            - LibreWolf: io.gitlab.librewolf-community
             - Microsoft Edge: com.microsoft.Edge
             - Opera: com.opera.Opera
+            - Ungoogled Chromium: com.github.Eloston.UngoogledChromium
         Gaming:
           description: "Rock and Stone!"
           default: false
