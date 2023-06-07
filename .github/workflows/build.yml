@@ -62,7 +62,6 @@ jobs:
         uses: mikefarah/yq@v4.34.1
 
       - name: Gather image data from recipe
-        shell: bash
         run: |
           SELECTED_IMAGE="${{ matrix.image }}"
           echo "IMAGE_NAME=ublue-${SELECTED_IMAGE}-friendly" >> $GITHUB_ENV
