@@ -5,21 +5,25 @@ name: ublue-main-base-friendly
 
 # The native container image to build on top of.
 # Warning: Non-uBlue images might not work properly, due to missing components.
-base-image: ghcr.io/awebeer256/ublue-main-base
+base_image: ghcr.io/awebeer256/ublue-main-base
 
 # What Fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated to the next major
 # Fedora version, assuming the image you're using as your base container
 # builds with the tag (all uBlue images do this).
-fedora-version: latest
+fedora_version: latest
 
 # This description will be visible in the container metadata.
 description: "Universal Blue, customized by Adam Beer for personal use. https://ublue.it/making-your-own/"
-desc-prefix: "Universal Blue, customized by Adam Beer for personal use. This image uses the"
-desc-inter: "environment, and"
-desc-nv-yes: includes
-desc-nv-no: does not include
-desc-suffix: "Nvidia drivers. https://ublue.it/making-your-own/"
+
+desc_prefix: "Universal Blue, customized by Adam Beer for personal use. This image uses the"
+
+desc_inter: "environment, and"
+
+desc_nv_yes: "includes"
+
+desc_nv_no: "does not include"
+desc_suffix: "Nvidia drivers. https://ublue.it/making-your-own/"
 
 # These scripts will be executed during the container build.
 # Place scripts in the "scripts/" dir and put the corresponding filenames here.
