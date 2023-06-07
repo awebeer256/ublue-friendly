@@ -108,7 +108,7 @@ screens:
             - MangoHUD (Utility): org.freedesktop.Platform.VulkanLayer.MangoHud//22.08
             - Steam: com.valvesoftware.Steam
             - Gamescope (Utility): com.valvesoftware.Steam.Utility.gamescope
-            - Proton Updater for Steam: net.davidotek.pupgui2
+            - GE-Proton/Wine-GE/Luxtorpeda Updater: net.davidotek.pupgui2
             - SteamTinkerLaunch (Utility): com.valvesoftware.Steam.Utility.steamtinkerlaunch
         Office:
           description: Boost your productivity.
