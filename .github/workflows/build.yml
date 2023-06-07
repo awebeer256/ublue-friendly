@@ -62,6 +62,7 @@ jobs:
         uses: mikefarah/yq@v4.34.1
 
       - name: Gather image data from recipe
+        shell: bash
         run: |
           echo "IMAGE_NAME=ublue-${{ matrix.image }}-friendly" >> $GITHUB_ENV
           DE="${${{ matrix.image }}#*-}"
@@ -70,7 +71,10 @@ jobs:
           else
             NV="$(yq '.desc-nv-no' ./${{ matrix.recipe }})"
           fi
-          echo "IMAGE_DESCRIPTION=$(yq '.desc-prefix' ./${{ matrix.recipe }}) ${DE} $(yq '.desc-inter' ./${{ matrix.recipe }}) ${NV} $(yq '.desc-suffix' ./${{ matrix.recipe }})" >> $GITHUB_ENV
+          DESC="$(yq '.desc-prefix' ./${{ matrix.recipe }})"
+          DESC="$DESC $DE $(yq '.desc-inter' ./${{ matrix.recipe }})"
+          DESC="$DESC $NV $(yq '.desc-suffix' ./${{ matrix.recipe }})"
+          echo "IMAGE_DESCRIPTION=$DESC" >> $GITHUB_ENV
           echo "FEDORA_MAJOR_VERSION=$(yq '.fedora-version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
           echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${{ matrix.image }}" >> $GITHUB_ENV
 
