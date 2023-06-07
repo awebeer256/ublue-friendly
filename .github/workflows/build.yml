@@ -66,11 +66,11 @@ jobs:
         run: |
           echo "IMAGE_NAME=ublue-${{ matrix.image }}-friendly" >> $GITHUB_ENV
           DE="${${{ matrix.image }}#*-}"
-          #if [ ${${{ matrix.image }}%-*} = nvidia ]; then
-          #  NV="$(yq '.desc_nv_yes' ./${{ matrix.recipe }})"
-          #else
-          #  NV="$(yq '.desc_nv_no' ./${{ matrix.recipe }})"
-          #fi
+          if [ ${${{ matrix.image }}%-*} = nvidia ]; then
+            NV="$(yq '.desc_nv_yes' ./${{ matrix.recipe }})"
+          else
+            NV="$(yq '.desc_nv_no' ./${{ matrix.recipe }})"
+          fi
           #DESC_PRE="$(yq '.desc_prefix' ./${{ matrix.recipe }})"
           DESC_INTER="$(yq '.desc_inter' ./${{ matrix.recipe }})"
           #DESC_SUF="$(yq '.desc_suffix' ./${{ matrix.recipe }})"
