@@ -70,16 +70,15 @@ jobs:
           }
           DE="${SELECTED_IMAGE#*-}"
           if [ ${SELECTED_IMAGE%-*} = nvidia ]; then
-            NV="$(get_yaml_string '.desc_nv_yes')"
+            NV="$(get_yaml_string '.desc-nv-yes')"
           else
-            NV="$(get_yaml_string '.desc_nv_no')"
+            NV="$(get_yaml_string '.desc-nv-no')"
           fi
-          DESC_PRE="$(get_yaml_string '.desc_prefix')"
-          DESC_INTER="$(get_yaml_string '.desc_inter')"
-          DESC_SUF="$(get_yaml_string '.desc_suffix')"
+          DESC_PRE="$(get_yaml_string '.desc-prefix')"
+          DESC_INTER="$(get_yaml_string '.desc-inter')"
+          DESC_SUF="$(get_yaml_string '.desc-suffix')"
           echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
-          #echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER" >> $GITHUB_ENV
-          echo "FEDORA_MAJOR_VERSION=$(get_yaml_string '.fedora_version')" >> $GITHUB_ENV
+          echo "FEDORA_MAJOR_VERSION=$(get_yaml_string '.fedora-version')" >> $GITHUB_ENV
           echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${SELECTED_IMAGE}" >> $GITHUB_ENV
 
       - name: Generate tags
