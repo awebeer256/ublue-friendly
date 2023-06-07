@@ -15,7 +15,7 @@ fedora-version: latest
 
 # This description will be visible in the container metadata.
 description: "Universal Blue, customized by Adam Beer for personal use. https://ublue.it/making-your-own/"
-desc-prefix: "Universal Blue, customized by Adam Beer for personal use. This image uses the"
+desc-prefix: "Universal Blue, customized by Adam Beer for personal use. This image uses SUPERCALAFRAGALISTICEXPIALIDOCIOUS the"
 desc-inter: "environment, and"
 desc-nv-yes: includes
 desc-nv-no: does not include
