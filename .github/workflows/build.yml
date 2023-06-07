@@ -64,18 +64,19 @@ jobs:
       - name: Gather image data from recipe
         shell: bash
         run: |
-          echo "IMAGE_NAME=ublue-${{ matrix.image }}-friendly" >> $GITHUB_ENV
-          DE="${${{ matrix.image }}#*-}"
-          if [ ${${{ matrix.image }}%-*} = nvidia ]; then
+          SELECTED_IMAGE="${{ matrix.image }}"
+          echo "IMAGE_NAME=ublue-${SELECTED_IMAGE}-friendly" >> $GITHUB_ENV
+          DE="${SELECTED_IMAGE#*-}"
+          if [ ${SELECTED_IMAGE%-*} = nvidia ]; then
             NV="$(yq '.desc_nv_yes' ./${{ matrix.recipe }})"
           else
             NV="$(yq '.desc_nv_no' ./${{ matrix.recipe }})"
           fi
           DESC_PRE="$(yq '.desc_prefix' ./${{ matrix.recipe }})"
           DESC_INTER="$(yq '.desc_inter' ./${{ matrix.recipe }})"
-          #DESC_SUF="$(yq '.desc_suffix' ./${{ matrix.recipe }})"
-          #echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
-          echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER" >> $GITHUB_ENV
+          DESC_SUF="$(yq '.desc_suffix' ./${{ matrix.recipe }})"
+          echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER $NV $DESC_SUF" >> $GITHUB_ENV
+          #echo "IMAGE_DESCRIPTION=$DESC_PRE $DE $DESC_INTER" >> $GITHUB_ENV
           echo "FEDORA_MAJOR_VERSION=$(yq '.fedora_version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
           echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${{ matrix.image }}" >> $GITHUB_ENV
 
