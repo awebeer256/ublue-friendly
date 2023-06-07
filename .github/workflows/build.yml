@@ -51,6 +51,7 @@ jobs:
       matrix:
         recipe:
           - recipe.yml
+        image: [main-sericea, nvidia-kinoite]
 
     steps:
       # Checkout push-to-registry action GitHub repository
@@ -62,10 +63,16 @@ jobs:
 
       - name: Gather image data from recipe
         run: |
-          echo "IMAGE_NAME=$(yq '.name' ./${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "IMAGE_DESCRIPTION=$(yq '.description' ./${{ matrix.recipe }})" >> $GITHUB_ENV
+          echo "IMAGE_NAME=ublue-${{ matrix.image }}-friendly" >> $GITHUB_ENV
+          DE="${${{ matrix.image }}#*-}"
+          if [ ${${{ matrix.image }}%-*} = nvidia ]; then
+            NV="$(yq '.desc-nv-yes' ./${{ matrix.recipe }})"
+          else
+            NV="$(yq '.desc-nv-no' ./${{ matrix.recipe }})"
+          fi
+          echo "IMAGE_DESCRIPTION=$(yq '.desc-prefix' ./${{ matrix.recipe }}) $DE $(yq '.desc-inter' ./${{ matrix.recipe }}) $NV $(yq '.desc-suffix' ./${{ matrix.recipe }})" >> $GITHUB_ENV
           echo "FEDORA_MAJOR_VERSION=$(yq '.fedora-version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "BASE_IMAGE_URL=$(yq '.base-image' ./${{ matrix.recipe }})" >> $GITHUB_ENV
+          echo "BASE_IMAGE_URL=${{ env.IMAGE_REGISTRY }}/ublue-${{ matrix.image }}" >> $GITHUB_ENV
 
       - name: Generate tags
         id: generate-tags
