@@ -77,6 +77,34 @@ screens:
             - Text Editor: org.gnome.TextEditor
             - Videos (Player): org.gnome.Totem
             - Weather: org.gnome.Weather
+        Core KDE Apps:
+          description: Core system applications for the KDE Plasma desktop environment.
+          default: false
+          # Pre-installed through rpms: Ark, Dolphin, Filelight, Gwenview, KCalc, KFind, KWrite, Okular
+          packages:
+            - Arianna: org.kde.arianna
+            - AudioTube: org.kde.audiotube
+            - Clock: org.kde.kclock
+            - CopyQ: com.github.hluk.copyq
+          # - digiKam: org.kde.digikam
+            - Elisa: org.kde.elisa
+            - ISO Image Writer: org.kde.isoimagewriter
+            - Kamoso: org.kde.kamoso
+            - Kasts: org.kde.kasts
+          # - Kdenlive: org.kde.kdenlive
+          # - KDevelop: org.kde.kdevelop
+            - Kleopatra: org.kde.kleopatra
+          # - KMahjongg: org.kde.kmahjongg
+            - KolourPaint: org.kde.kolourpaint
+            - Kontact: org.kde.kontact
+          # - KPatience: org.kde.kpat
+            - KRDC: org.kde.krdc
+          # - Krita: org.kde.krita
+            - KTorrent: org.kde.ktorrent
+            - KTrip: org.kde.ktrip
+            - PlasmaTube: org.kde.plasmatube
+            - SMPlayer: info.smplayer.SMPlayer
+            - Weather: org.kde.kweather
         System Apps:
           description: System applications for all desktop environments.
           default: true
