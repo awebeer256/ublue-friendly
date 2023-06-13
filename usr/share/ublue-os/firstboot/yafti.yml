@@ -60,9 +60,9 @@ screens:
             - Calculator: org.gnome.Calculator
             - Calendar: org.gnome.Calendar
             - Characters: org.gnome.Characters
-            - Cheese: org.gnome.Cheese
+            - Cheese (Take Pictures): org.gnome.Cheese
             - Clocks: org.gnome.clocks
-            - Connections: org.gnome.Connections
+            - Connections (Remote Desktop): org.gnome.Connections
             - Contacts: org.gnome.Contacts
             - Disk Usage Analyzer: org.gnome.baobab
             - Document Scanner: org.gnome.SimpleScan
@@ -82,28 +82,28 @@ screens:
           default: false
           # Pre-installed through rpms: Ark, Dolphin, Filelight, Gwenview, KCalc, KFind, KWrite, Okular
           packages:
-            - Arianna: org.kde.arianna
-            - AudioTube: org.kde.audiotube
+            - Arianna (EBook Reader): org.kde.arianna
+            - AudioTube (YouTube Music Client): org.kde.audiotube
             - Clock: org.kde.kclock
-            - CopyQ: com.github.hluk.copyq
+            - CopyQ (Clipboard Manager): com.github.hluk.copyq
           # - digiKam: org.kde.digikam
-            - Elisa: org.kde.elisa
+            - Elisa (Music Player): org.kde.elisa
             - ISO Image Writer: org.kde.isoimagewriter
-            - Kamoso: org.kde.kamoso
-            - Kasts: org.kde.kasts
+            - Kamoso (Take Pictures): org.kde.kamoso
+            - Kasts (Podcast Player): org.kde.kasts
           # - Kdenlive: org.kde.kdenlive
           # - KDevelop: org.kde.kdevelop
-            - Kleopatra: org.kde.kleopatra
+            - Kleopatra (Manage Cryptographic Certificates): org.kde.kleopatra
           # - KMahjongg: org.kde.kmahjongg
             - KolourPaint: org.kde.kolourpaint
-            - Kontact: org.kde.kontact
+            - Kontact (Contacts, Calendars, Email, News Reader, Sticky Notes): org.kde.kontact
           # - KPatience: org.kde.kpat
-            - KRDC: org.kde.krdc
+            - KRDC (Remote Desktop): org.kde.krdc
           # - Krita: org.kde.krita
             - KTorrent: org.kde.ktorrent
-            - KTrip: org.kde.ktrip
-            - PlasmaTube: org.kde.plasmatube
-            - SMPlayer: info.smplayer.SMPlayer
+            - KTrip (Public Transport Navigation): org.kde.ktrip
+            - PlasmaTube (YouTube Client): org.kde.plasmatube
+            - SMPlayer (Media Player): info.smplayer.SMPlayer
             - Weather: org.kde.kweather
         System Apps:
           description: System applications for all desktop environments.
@@ -165,7 +165,7 @@ screens:
       icon: "/path/to/icon"
       links:
         - "Install More Applications":
-            run: /usr/bin/gnome-software
+            run: /usr/bin/gnome-software # TODO swap with Discover on KDE Plasma (How?)
         - "Website":
             run: /usr/bin/xdg-open https://ublue.it
         - "Join the Discord Community":
